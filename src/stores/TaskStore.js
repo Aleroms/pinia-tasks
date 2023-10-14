@@ -22,6 +22,13 @@ export const useTaskStore = defineStore("taskStore", {
       return state.tasks.length;
     },
   },
+  actions: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
+  },
 });
 //getters can manipulate data before returning the values
 //returns new values and does not manipulate state
+
+//actions update the data
