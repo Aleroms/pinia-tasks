@@ -9,7 +9,6 @@ body * {
   font-family: "Poppins";
 }
 
-/* header */
 header {
   text-align: center;
   background: #e7e7e7;
@@ -30,10 +29,9 @@ header h1 {
   color: #777;
   transform: rotate(2deg);
 }
-
 .filter {
-  width: 640px;
-  margin: 10px auto;
+  min-width: 300px;
+  margin: 1rem;
   text-align: right;
 }
 .filter button {
@@ -49,7 +47,11 @@ header h1 {
 .new-task-form {
   background: #e7e7e7;
   padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 form {
   max-width: 400px;
   margin: 0 auto;
@@ -72,4 +74,46 @@ form input {
   border-radius: 6px;
   color: #555;
   font-size: 1em;
+}
+
+.task-list {
+  min-width: 300px;
+  margin: 1rem;
+}
+.task {
+  padding: 6px 20px;
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task h3,
+.task .icons {
+  display: inline-block;
+}
+.task .icons {
+  text-align: right;
+}
+.task i {
+  font-size: 1.4em;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #bbb;
+}
+.task i.active {
+  color: #ff005d;
+}
+/* tablet  */
+@media (min-width: 673px) {
+  .task-list {
+    max-width: 640px;
+    margin: 10px auto;
+  }
+  .filter {
+    max-width: 640px;
+    margin: 10px auto;
+  }
 }
