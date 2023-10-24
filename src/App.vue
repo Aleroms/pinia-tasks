@@ -1,11 +1,10 @@
 <template>
+  <!-- heading -->
+  <header>
+    <img src="./assets/Pinialogo.svg" alt="pinia" />
+    <h1>Pinia Tasks</h1>
+  </header>
   <main>
-    <!-- heading -->
-    <header>
-      <img src="./assets/Pinialogo.svg" alt="pinia" />
-      <h1>Pinia Tasks</h1>
-    </header>
-
     <!-- new task form  -->
     <div class="new-task-form">
       <TaskForm />
@@ -32,6 +31,7 @@
       </div>
     </div>
   </main>
+  <RouterView></RouterView>
 </template>
 
 <script>
