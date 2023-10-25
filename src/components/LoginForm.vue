@@ -11,7 +11,9 @@
     <ErrorMessage name="password" />
     <button @click.prevent="login" class="login-btn">Login</button>
   </VeeForm>
-  <p>Don't have an account? <span @click="switchForm">Sign Up</span></p>
+  <p>
+    Don't have an account? <span @click="formStore.toggleForm">Sign Up</span>
+  </p>
   <hr class="hr-text" data-content="or" />
   <div class="login-social">
     <button @click.prevent="login" class="login-btn">
@@ -22,16 +24,18 @@
 </template>
 
 <script>
+import { useFormStore } from "@/stores/FormStore.js";
 export default {
   name: "LoginForm",
   setup() {
+    const formStore = useFormStore();
     const login = () => {
       console.log("submitting login form...");
     };
     const switchForm = () => {
       console.log("switching form...");
     };
-    return { login, switchForm };
+    return { login, switchForm, formStore };
   },
 };
 </script>
@@ -56,6 +60,7 @@ export default {
 span {
   font-weight: 700;
   color: #ffd859;
+  cursor: pointer;
 }
 
 .hr-text {
@@ -89,7 +94,7 @@ span {
     background-color: #fcfcfa;
   }
 }
-.login-social{
-    padding: 1rem;
+.login-social {
+  padding: 1rem;
 }
 </style>
