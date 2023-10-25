@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vee-validate/rules": "^4.11.8",
     "pinia": "^2.1.6",
     "vee-validate": "^4.11.8",
     "vue": "^3.3.4",

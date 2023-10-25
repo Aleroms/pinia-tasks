@@ -1,19 +1,26 @@
 <template>
   <div class="banner"></div>
   <div class="authentication">
-    <h2 class="auth-title">{{ form }}</h2>
+    <h2 class="auth-title">{{ formStore.name }}</h2>
+    <!-- <button @click="formStore.toggleForm">toggle</button> -->
+    <LoginForm v-if="formStore.name === 'Login'" />
+    <RegisterForm v-else />
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import LoginForm from "../components/LoginForm.vue";
+import RegisterForm from "../components/RegisterForm.vue";
+import { useFormStore } from "../stores/FormStore";
 
 export default {
   name: "HomePage",
+  components: { LoginForm, RegisterForm },
   setup() {
-    const form = ref("Login");
+    const formStore = useFormStore();
 
-    return { form };
+    return { formStore };
   },
 };
 </script>

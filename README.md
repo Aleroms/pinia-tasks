@@ -9,8 +9,11 @@ I am adding vue router and connecting a firebase to it for authentication and ba
 `npm install pinia`
 after installing pinia you must register it.
 
-`npm install vue-router@4`
 `npm install vee-validate --save`
+`npm install @vee-validate/rules`
+must install both packets if using rules as well
+
+`npm install vue-router@4`
 
 ## useful links
 
