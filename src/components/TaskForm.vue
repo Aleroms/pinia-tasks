@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" class="filter-form">
       <input type="text" placeholder="I need to..." v-model="newTask" />
       <button>Add</button>
     </form>

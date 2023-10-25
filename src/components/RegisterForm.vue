@@ -53,18 +53,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form-container {
   margin: 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .v-input {
   border: 1px solid #555;
-  width: 90%;
   margin-bottom: 15px;
+  width: 96%;
 }
 .login-btn {
   width: 100%;
@@ -73,6 +73,7 @@ export default {
 span {
   font-weight: 700;
   color: #ffd859;
+  cursor: pointer;
 }
 
 .hr-text {

@@ -30,4 +30,7 @@ export default {
   background-color: #e7e7e7;
   height: 84px;
 }
+.authentication{
+  padding: 0 1rem;
+}
 </style>

@@ -57,7 +57,7 @@ header h1 {
 }
 
 /* form stuff  */
-form {
+.filter-form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;

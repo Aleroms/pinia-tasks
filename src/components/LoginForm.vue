@@ -11,6 +11,7 @@
     <ErrorMessage name="password" />
     <button @click.prevent="login" class="login-btn">Login</button>
   </VeeForm>
+
   <p>
     Don't have an account? <span @click="formStore.toggleForm">Sign Up</span>
   </p>
@@ -40,18 +41,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form-container {
-  margin: 1rem;
+  margin: 1rem auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 .v-input {
   border: 1px solid #555;
-  width: 90%;
   margin-bottom: 15px;
+  width: 96%;
+  max-width: 600px;
 }
 .login-btn {
   width: 100%;
