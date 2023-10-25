@@ -1,8 +1,7 @@
 <template>
-  <div class="banner"></div>
+  <!-- <div class="banner"></div> -->
   <div class="authentication">
     <h2 class="auth-title">{{ formStore.name }}</h2>
-    <!-- <button @click="formStore.toggleForm">toggle</button> -->
     <LoginForm v-if="formStore.name === 'Login'" />
     <RegisterForm v-else />
   </div>
@@ -30,7 +29,7 @@ export default {
   background-color: #e7e7e7;
   height: 84px;
 }
-.authentication{
+.authentication {
   padding: 0 1rem;
 }
 </style>

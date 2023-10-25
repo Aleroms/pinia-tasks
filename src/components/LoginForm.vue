@@ -1,15 +1,22 @@
 <template>
-  <VeeForm class="form-container">
+  <div class="login-alert" v-if="login_alert_display">
+    {{ login_alert_msg }}
+  </div>
+  <VeeForm
+    class="form-container"
+    :validation-schema="loginSchema"
+    @submit="login"
+  >
     <VeeField name="email" type="email" placeholder="Email" class="v-input" />
-    <ErrorMessage name="email" />
+    <ErrorMessage name="email" class="error-message" />
     <VeeField
       name="password"
       type="password"
       placeholder="Password"
       class="v-input"
     />
-    <ErrorMessage name="password" />
-    <button @click.prevent="login" class="login-btn">Login</button>
+    <ErrorMessage name="password" class="error-message" />
+    <button type="submit" class="login-btn">Login</button>
   </VeeForm>
 
   <p>
@@ -21,75 +28,40 @@
 
 <script>
 import { useFormStore } from "@/stores/FormStore.js";
+import { ref } from "vue";
 import LoginSocialForm from "./LoginSocialForm.vue";
 export default {
   name: "LoginForm",
   components: { LoginSocialForm },
   setup() {
+    //pinia
     const formStore = useFormStore();
-    const login = () => {
-      console.log("submitting login form...");
+
+    //validation
+    const loginSchema = {
+      email: "required|min:3|max:100|email",
+      password: "required|min:6|max:100",
     };
-    const switchForm = () => {
-      console.log("switching form...");
+
+    //login
+    const login_alert_display = ref(false);
+    const login_alert_msg = ref("logging in...");
+    const login_in_submission = false;
+    const login = (values) => {
+      console.log(values);
+      login_alert_msg.value = "Please wait, you are being logged in...";
+      login_alert_display.value = true;
     };
-    return { login, switchForm, formStore };
+
+    return {
+      login,
+      loginSchema,
+      login_alert_display,
+      login_alert_msg,
+      formStore,
+    };
   },
 };
 </script>
 
-<style scoped>
-.form-container {
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.v-input {
-  border: 1px solid #555;
-  margin-bottom: 15px;
-  width: 96%;
-}
-.login-btn {
-  width: 100%;
-  margin-bottom: 15px;
-}
-span {
-  font-weight: 700;
-  color: #ffd859;
-  cursor: pointer;
-}
-
-.hr-text {
-  line-height: 1em;
-  position: relative;
-  outline: 0;
-  border: 0;
-  color: black;
-  width: 90%;
-  text-align: center;
-  height: 1.5em;
-  opacity: 0.5;
-  &:before {
-    content: "";
-    background: gray;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-  }
-  &:after {
-    content: attr(data-content);
-    position: relative;
-    display: inline-block;
-    color: black;
-
-    padding: 0 0.5em;
-    line-height: 1.5em;
-    color: #818078;
-    background-color: #fcfcfa;
-  }
-}
-</style>
+<style scoped></style>

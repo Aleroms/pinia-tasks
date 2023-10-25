@@ -17,4 +17,5 @@ must install both packets if using rules as well
 
 ## useful links
 
-[https://router.vuejs.org/installation.html](Vue Router) - guide to installation
+- [https://router.vuejs.org/installation.html](Vue Router) - guide to installation
+- [https://vee-validate.logaretm.com/v4/tutorials/basics/](Vee Validate) - basics on form validation

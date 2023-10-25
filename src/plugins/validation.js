@@ -5,13 +5,8 @@ import {
   ErrorMessage,
   configure,
 } from "vee-validate";
-import {
-  required,
-  email,
-  confirmed,
-  min_value as minVal,
-  max_value as maxVal,
-} from "@vee-validate/rules";
+import { required, email, confirmed, min, max } from "@vee-validate/rules";
+
 export default {
   install(app) {
     app.component("VeeForm", VeeForm);
@@ -19,8 +14,10 @@ export default {
     app.component("ErrorMessage", ErrorMessage);
 
     defineRule("required", required);
-    defineRule("min_value", minVal);
-    defineRule("max_value", maxVal);
+    defineRule("min", min);
+    defineRule("max", max);
+    defineRule("email", email);
+    defineRule("confirmed", confirmed);
 
     configure({
       validateOnBlur: true,

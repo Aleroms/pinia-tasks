@@ -1,22 +1,27 @@
 <template>
-  <VeeForm class="form-container">
+  <div class="reg-alert" v-if="reg_alert_display">{{ reg_alert_msg }}</div>
+  <VeeForm
+    class="form-container"
+    :validation-schema="registerSchema"
+    @submit="register"
+  >
     <VeeField name="email" type="email" placeholder="Email" class="v-input" />
-    <ErrorMessage name="email" />
+    <ErrorMessage name="email" class="error-message" />
     <VeeField
       name="password"
       type="password"
       placeholder="Create Password"
       class="v-input"
     />
-    <ErrorMessage name="password" />
+    <ErrorMessage name="password" class="error-message" />
     <VeeField
-      name="confirm"
-      type="confirm"
+      name="confirmed"
+      type="password"
       placeholder="Confirm Password"
       class="v-input"
     />
-    <ErrorMessage name="confirm" />
-    <button @click.prevent="register" class="login-btn">Register</button>
+    <ErrorMessage name="confirmed" class="error-message" />
+    <button type="submit" class="login-btn">Register</button>
   </VeeForm>
   <p>
     Already have an account? <span @click="formStore.toggleForm">Log In</span>
@@ -27,6 +32,7 @@
 
 <script>
 import { useFormStore } from "../stores/FormStore";
+import { ref } from "vue";
 import { ErrorMessage } from "vee-validate";
 import LoginSocialForm from "./LoginSocialForm.vue";
 
@@ -34,74 +40,36 @@ export default {
   name: "RegisterForm",
   components: { LoginSocialForm },
   setup() {
+    //pinia
     const formStore = useFormStore();
-    const register = () => {
-      console.log("submitting register form...");
+
+    //validation
+    const registerSchema = {
+      email: "required|min:3|max:100|email",
+      password: "required|min:6|max:100",
+      confirmed: "confirmed:@password",
     };
-    const switchForm = () => {
-      console.log("switching form...");
+
+    //register
+    const reg_alert_display = ref(false);
+    const reg_alert_msg = ref("registering...");
+    const reg_in_submission = false;
+    const register = (values) => {
+      console.log(values);
+      reg_alert_display.value = true;
+      reg_alert_msg.value = "Please wait, your account is being created...";
     };
-    const login = () => {
-      console.log("logging in...");
+
+    return {
+      formStore,
+      register,
+      registerSchema,
+      reg_alert_display,
+      reg_alert_msg,
     };
-    return { formStore, register, switchForm, login };
   },
   components: { ErrorMessage, LoginSocialForm },
 };
 </script>
 
-<style scoped>
-.form-container {
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.v-input {
-  border: 1px solid #555;
-  margin-bottom: 15px;
-  width: 96%;
-}
-.login-btn {
-  width: 100%;
-  margin-bottom: 15px;
-}
-span {
-  font-weight: 700;
-  color: #ffd859;
-  cursor: pointer;
-}
-
-.hr-text {
-  line-height: 1em;
-  position: relative;
-  outline: 0;
-  border: 0;
-  color: black;
-  width: 90%;
-  text-align: center;
-  height: 1.5em;
-  opacity: 0.5;
-  &:before {
-    content: "";
-    background: gray;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-  }
-  &:after {
-    content: attr(data-content);
-    position: relative;
-    display: inline-block;
-    color: black;
-
-    padding: 0 0.5em;
-    line-height: 1.5em;
-    color: #818078;
-    background-color: #fcfcfa;
-  }
-}
-</style>
+<style scoped></style>
