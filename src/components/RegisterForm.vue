@@ -22,20 +22,17 @@
     Already have an account? <span @click="formStore.toggleForm">Log In</span>
   </p>
   <hr class="hr-text" data-content="or" />
-  <div class="login-social">
-    <button @click.prevent="login" class="login-btn">
-      Login with Facebook
-    </button>
-    <button @click.prevent="login" class="login-btn">Login with Google</button>
-  </div>
+  <LoginSocialForm />
 </template>
 
 <script>
 import { useFormStore } from "../stores/FormStore";
 import { ErrorMessage } from "vee-validate";
+import LoginSocialForm from "./LoginSocialForm.vue";
 
 export default {
   name: "RegisterForm",
+  components: { LoginSocialForm },
   setup() {
     const formStore = useFormStore();
     const register = () => {
@@ -49,7 +46,7 @@ export default {
     };
     return { formStore, register, switchForm, login };
   },
-  components: { ErrorMessage },
+  components: { ErrorMessage, LoginSocialForm },
 };
 </script>
 
@@ -106,8 +103,5 @@ span {
     color: #818078;
     background-color: #fcfcfa;
   }
-}
-.login-social {
-  padding: 1rem;
 }
 </style>

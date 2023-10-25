@@ -16,18 +16,15 @@
     Don't have an account? <span @click="formStore.toggleForm">Sign Up</span>
   </p>
   <hr class="hr-text" data-content="or" />
-  <div class="login-social">
-    <button @click.prevent="login" class="login-btn">
-      Login with Facebook
-    </button>
-    <button @click.prevent="login" class="login-btn">Login with Google</button>
-  </div>
+  <LoginSocialForm />
 </template>
 
 <script>
 import { useFormStore } from "@/stores/FormStore.js";
+import LoginSocialForm from "./LoginSocialForm.vue";
 export default {
   name: "LoginForm",
+  components: { LoginSocialForm },
   setup() {
     const formStore = useFormStore();
     const login = () => {
@@ -43,18 +40,16 @@ export default {
 
 <style scoped>
 .form-container {
-  margin: 1rem auto;
+  margin: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-sizing: border-box;
 }
 .v-input {
   border: 1px solid #555;
   margin-bottom: 15px;
   width: 96%;
-  max-width: 600px;
 }
 .login-btn {
   width: 100%;
@@ -96,8 +91,5 @@ span {
     color: #818078;
     background-color: #fcfcfa;
   }
-}
-.login-social {
-  padding: 1rem;
 }
 </style>
