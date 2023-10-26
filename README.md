@@ -15,6 +15,8 @@ must install both packets if using rules as well
 
 `npm install vue-router@4`
 
+`npm install firebase`
+
 ## useful links
 
 - [https://router.vuejs.org/installation.html](Vue Router) - guide to installation

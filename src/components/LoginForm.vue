@@ -28,6 +28,7 @@
 
 <script>
 import { useFormStore } from "@/stores/FormStore.js";
+import { useUserStore } from "../stores/UserStore";
 import { ref } from "vue";
 import LoginSocialForm from "./LoginSocialForm.vue";
 export default {
@@ -36,6 +37,7 @@ export default {
   setup() {
     //pinia
     const formStore = useFormStore();
+    const userStore = useUserStore();
 
     //validation
     const loginSchema = {
@@ -46,11 +48,22 @@ export default {
     //login
     const login_alert_display = ref(false);
     const login_alert_msg = ref("logging in...");
-    const login_in_submission = false;
+    const login_in_submission = ref(false);
     const login = (values) => {
       console.log(values);
       login_alert_msg.value = "Please wait, you are being logged in...";
       login_alert_display.value = true;
+      login_in_submission.value = true;
+
+      try {
+        userStore.login(values);
+      } catch (error) {
+        login_alert_msg.value = "Error has occured...";
+        console.log(error);
+        return
+      }
+      login_alert_msg.value = "Logging In..."
+      //move route path here
     };
 
     return {
