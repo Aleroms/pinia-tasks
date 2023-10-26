@@ -3,6 +3,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  FacebookAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -16,12 +19,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const fb = new FacebookAuthProvider();
 
-// const createAuthUserWithEmailAndPassword = async (values) => {
-//   return await auth.createUserWithEmailAndPassword(
-//     values.email,
-//     values.password
-//   );
-// };
-
-export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,  };
+export {
+  auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  fb,
+  signInWithPopup,
+};

@@ -35,7 +35,10 @@
 <script>
 import { useFormStore } from "../stores/FormStore";
 import { useUserStore } from "../stores/UserStore";
+
+import { useRouter } from "vue-router";
 import { ref } from "vue";
+
 import { ErrorMessage } from "vee-validate";
 import LoginSocialForm from "./LoginSocialForm.vue";
 
@@ -46,6 +49,9 @@ export default {
     //pinia
     const formStore = useFormStore();
     const userStore = useUserStore();
+
+    //router
+    const router = useRouter();
 
     //validation
     const registerSchema = {
@@ -59,22 +65,28 @@ export default {
     const reg_alert_msg = ref("registering...");
     const reg_in_submission = ref(false);
 
-    const register = (values) => {
+    const register = async (values) => {
       reg_alert_display.value = true;
       reg_alert_msg.value = "Please wait, your account is being created...";
       reg_in_submission.value = true;
 
       try {
-        userStore.register(values);
+        await userStore.register(values);
       } catch (error) {
+        //Handling Firebase errors
+        if (error.code === "auth/email-already-in-use") {
+          reg_alert_msg.value = "Email already in use.";
+        } else {
+          reg_alert_msg.value = "Error has occurred...";
+        }
         console.log(error);
-        reg_alert_msg.value = "Error has occurred...";
+        reg_in_submission.value = false;
         return;
       }
 
       reg_alert_msg.value = "Successfully Signed Up! Logging In...";
       reg_in_submission.value = false;
-      // this.$router.push({ name: "Tasks" });
+      router.push("/mytasks");
     };
 
     return {

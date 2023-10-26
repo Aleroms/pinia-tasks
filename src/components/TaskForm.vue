@@ -4,17 +4,27 @@
       <input type="text" placeholder="I need to..." v-model="newTask" />
       <button>Add</button>
     </form>
-    <button class="logout">Logout</button>
+    <button class="logout" @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
 //9:43
 import { useTaskStore } from "@/stores/taskStore";
+import { useUserStore } from "@/stores/UserStore";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 export default {
   setup() {
     const taskStore = useTaskStore();
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const logout = () => {
+      userStore.logout();
+      router.push({ name: "Home" });
+    };
+
     const newTask = ref("");
     const handleSubmit = () => {
       //value is required to use var
@@ -29,7 +39,7 @@ export default {
       newTask.value = "";
     };
 
-    return { handleSubmit, newTask };
+    return { handleSubmit, newTask, logout };
   },
 };
 </script>

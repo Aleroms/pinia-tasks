@@ -29,6 +29,7 @@
 <script>
 import { useFormStore } from "@/stores/FormStore.js";
 import { useUserStore } from "../stores/UserStore";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 import LoginSocialForm from "./LoginSocialForm.vue";
 export default {
@@ -45,25 +46,33 @@ export default {
       password: "required|min:6|max:100",
     };
 
+    //router
+    const router = useRouter();
+
     //login
     const login_alert_display = ref(false);
     const login_alert_msg = ref("logging in...");
     const login_in_submission = ref(false);
-    const login = (values) => {
-      console.log(values);
+
+    const login = async (values) => {
       login_alert_msg.value = "Please wait, you are being logged in...";
       login_alert_display.value = true;
       login_in_submission.value = true;
 
       try {
-        userStore.login(values);
+        await userStore.login(values);
       } catch (error) {
-        login_alert_msg.value = "Error has occured...";
+        //Handle Firebase errors
+        if (error.code === "auth/invalid-login-credentials") {
+          login_alert_msg.value = "Invalid login credentials...";
+        } else {
+          login_alert_msg.value = "An error has occured...";
+        }
         console.log(error);
-        return
+        return;
       }
-      login_alert_msg.value = "Logging In..."
-      //move route path here
+      login_alert_msg.value = "Logging In...";
+      router.push("/mytasks");
     };
 
     return {

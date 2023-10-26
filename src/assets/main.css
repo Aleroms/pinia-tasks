@@ -23,6 +23,7 @@ header {
 header img {
   max-width: 60px;
   transform: rotate(-10deg);
+  cursor: pointer;
 }
 header h1 {
   margin: 0;

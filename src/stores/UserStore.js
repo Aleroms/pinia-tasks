@@ -1,8 +1,11 @@
 import { defineStore } from "pinia";
 import {
   auth,
+  fb,
+  signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "@/plugins/firebase.js";
 
 export const useUserStore = defineStore("userStore", {
@@ -22,6 +25,18 @@ export const useUserStore = defineStore("userStore", {
     async login(values) {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       this.userLoggedIn = true;
+    },
+    async logout() {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.log(error);
+      }
+
+      this.userLoggedIn = false;
+    },
+    async signInWithFacebook() {
+      await signInWithPopup(auth, fb);
     },
   },
 });
