@@ -30,10 +30,9 @@
 </template>
 
 <script>
-
 import TaskDetails from "@/components/TaskDetails.vue";
 import TaskForm from "@/components/TaskForm.vue";
-import { useTaskStore } from "@/stores/taskStore.js";
+import { useTaskStore } from "@/stores/TaskStore.js";
 import { ref } from "vue";
 export default {
   components: { TaskDetails, TaskForm },
