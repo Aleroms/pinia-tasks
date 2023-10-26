@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/view/Home.vue";
 import MyTasks from "@/view/MyTasks.vue";
 import PrivacyPolicy from "@/view/PrivacyPolicy.vue";
+import DeleteAccount from "@/view/DeleteAccount.vue";
 const routes = [
   {
     name: "Home",
@@ -18,6 +19,11 @@ const routes = [
     name: "PrivacyPolicy",
     path: "/privacypolicy",
     component: PrivacyPolicy,
+  },
+  {
+    name: "DeleteAccount",
+    path: "/deleteaccount",
+    component: DeleteAccount,
   },
 ];
 

@@ -35,6 +35,7 @@ import TaskForm from "@/components/TaskForm.vue";
 import { useTaskStore } from "@/stores/TaskStore.js";
 import { ref } from "vue";
 export default {
+  name:'MyTasks',
   components: { TaskDetails, TaskForm },
   setup() {
     //returns stores

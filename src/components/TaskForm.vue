@@ -5,6 +5,9 @@
       <button>Add</button>
     </form>
     <button class="logout" @click="logout">Logout</button>
+    <button class="delete-account logout" @click="deleteAcct">
+      Delete Account
+    </button>
   </div>
 </template>
 
@@ -25,6 +28,10 @@ export default {
       router.push({ name: "Home" });
     };
 
+    const deleteAcct = () => {
+      router.push({ name: "DeleteAccount" });
+    };
+
     const newTask = ref("");
     const handleSubmit = () => {
       //value is required to use var
@@ -39,7 +46,7 @@ export default {
       newTask.value = "";
     };
 
-    return { handleSubmit, newTask, logout };
+    return { handleSubmit, newTask, logout, deleteAcct };
   },
 };
 </script>

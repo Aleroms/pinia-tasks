@@ -132,6 +132,11 @@ form input {
   margin-left: 1rem;
 }
 
+.delete-account {
+  background: #ff005d;
+  color: #fff;
+}
+
 /* form validation stuff  */
 .error-message {
   text-align: start;

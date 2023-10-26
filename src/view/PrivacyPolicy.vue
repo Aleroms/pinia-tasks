@@ -10,7 +10,7 @@
           Pinia Tasks App ("we," "our," or "us") is committed to protecting your
           privacy. This Privacy Policy explains how we collect, use, disclose,
           and safeguard your personal information when you use our website
-          [yourwebsite.com] and our services.
+          piniatasks.netlify.app/ and our services.
         </p>
       </li>
       <!-- Section 2: Information We Collect -->
@@ -102,7 +102,7 @@
         <h4>Contact Us</h4>
         <p>
           If you have any questions or concerns about this Privacy Policy,
-          please contact us at [your contact email address].
+          please contact us at ccastu.green@outlook.com.
         </p>
       </li>
 
@@ -123,5 +123,3 @@ export default {
   name: "PrivacyPolicy",
 };
 </script>
-
-<style lang="scss" scoped></style>
