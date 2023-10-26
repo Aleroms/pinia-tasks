@@ -193,6 +193,17 @@ span {
     background-color: #fcfcfa;
   }
 }
+.privacy-container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.privacy-container ol {
+  max-width: 640px;
+  padding-left: 20px;
+}
 /* tablet  */
 @media (min-width: 673px) {
   .task-list {

@@ -1,17 +1,35 @@
 <template>
   <div class="login-social">
-    <button @click.prevent="login" class="facebook-btn btn">
+    <button @click.prevent="loginWithFacebook" class="facebook-btn btn">
       Login with Facebook
     </button>
     <button @click.prevent="login" class="google-btn btn">
       Login with Google
     </button>
+    <RouterLink to="/privacypolicy">Privacy Policy</RouterLink>
   </div>
 </template>
 
 <script>
+import { useUserStore } from "../stores/UserStore";
+import { useRouter } from "vue-router";
 export default {
   name: "LoginSocialForm",
+  setup() {
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const loginWithFacebook = async () => {
+      try {
+        await userStore.signInWithFacebook();
+      } catch (error) {
+        console.log(error);
+      }
+
+      router.push("/mytasks");
+    };
+    return { loginWithFacebook };
+  },
 };
 </script>
 
@@ -31,6 +49,7 @@ export default {
 .login-social {
   display: flex;
   margin: 1rem;
+  padding: 10px 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;

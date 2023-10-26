@@ -37,6 +37,7 @@ export const useUserStore = defineStore("userStore", {
     },
     async signInWithFacebook() {
       await signInWithPopup(auth, fb);
+      this.userLoggedIn = true;
     },
   },
 });

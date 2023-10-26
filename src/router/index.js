@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/view/Home.vue";
 import MyTasks from "@/view/MyTasks.vue";
+import PrivacyPolicy from "@/view/PrivacyPolicy.vue";
 const routes = [
   {
     name: "Home",
@@ -12,6 +13,11 @@ const routes = [
     name: "Tasks",
     path: "/mytasks",
     component: MyTasks,
+  },
+  {
+    name: "PrivacyPolicy",
+    path: "/privacypolicy",
+    component: PrivacyPolicy,
   },
 ];
 
