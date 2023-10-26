@@ -10,7 +10,7 @@
 
 <script>
 //9:43
-import { useTaskStore } from "@/stores/taskStore";
+import { useTaskStore } from "@/stores/TaskStore";
 import { useUserStore } from "@/stores/UserStore";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
