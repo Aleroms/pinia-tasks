@@ -1,10 +1,11 @@
 <template>
   <div class="login-social">
     <button @click.prevent="loginWithGitHub" class="github-btn btn">
-      Login with GitHub
+      <i class="fa-brands fa-github" style="color: #fff"></i> Login with GitHub
     </button>
     <button @click.prevent="loginWithGoogle" class="google-btn btn">
-      Login with Google
+      <img src="/google.svg" alt="google icon" class="google-icon" /> Login with
+      Google
     </button>
     <RouterLink to="/privacypolicy">Privacy Policy</RouterLink>
   </div>
@@ -55,6 +56,11 @@ export default {
 </script>
 
 <style scoped>
+.google-icon{
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
 .btn {
   width: 100%;
   margin-bottom: 15px;
@@ -78,5 +84,8 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.login-social i {
+  margin-right: 10px;
 }
 </style>
