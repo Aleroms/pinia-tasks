@@ -52,7 +52,7 @@ header h1 {
 }
 .new-task-form {
   background: #e7e7e7;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +61,6 @@ header h1 {
 /* form stuff  */
 .filter-form {
   max-width: 400px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 10px;
@@ -127,9 +126,8 @@ form input {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.wrapper .logout {
-  margin-left: 1rem;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .delete-account {
@@ -222,5 +220,8 @@ span {
   .authentication {
     max-width: 640px;
     margin: 10px auto;
+  }
+  .wrapper .logout {
+    margin-left: 1rem;
   }
 }

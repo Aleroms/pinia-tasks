@@ -6,6 +6,7 @@ import {
   signOut,
   FacebookAuthProvider,
   signInWithPopup,
+  deleteUser,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -28,4 +29,5 @@ export {
   signOut,
   fb,
   signInWithPopup,
+  deleteUser,
 };

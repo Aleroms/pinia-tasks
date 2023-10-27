@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  deleteUser,
 } from "@/plugins/firebase.js";
 
 export const useUserStore = defineStore("userStore", {
@@ -38,6 +39,13 @@ export const useUserStore = defineStore("userStore", {
     async signInWithFacebook() {
       await signInWithPopup(auth, fb);
       this.userLoggedIn = true;
+    },
+    async deleteAccount() {
+      if (this.userLoggedIn) {
+        const user = auth.currentUser;
+        await deleteUser(user);
+        this.userLoggedIn = false;
+      }
     },
   },
 });
