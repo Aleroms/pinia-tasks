@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   signInWithPopup,
   deleteUser,
 } from "firebase/auth";
@@ -21,13 +23,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const fb = new FacebookAuthProvider();
+const git = new GithubAuthProvider();
+const google = new GoogleAuthProvider();
 
 export {
   auth,
+  git,
+  fb,
+  google,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  fb,
   signInWithPopup,
   deleteUser,
 };

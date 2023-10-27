@@ -1,9 +1,9 @@
 <template>
   <div class="login-social">
-    <button @click.prevent="loginWithFacebook" class="facebook-btn btn">
-      Login with Facebook
+    <button @click.prevent="loginWithGitHub" class="github-btn btn">
+      Login with GitHub
     </button>
-    <button @click.prevent="login" class="google-btn btn">
+    <button @click.prevent="loginWithGoogle" class="google-btn btn">
       Login with Google
     </button>
     <RouterLink to="/privacypolicy">Privacy Policy</RouterLink>
@@ -28,7 +28,28 @@ export default {
 
       router.push("/mytasks");
     };
-    return { loginWithFacebook };
+
+    const loginWithGitHub = async () => {
+      try {
+        await userStore.signInWithGitHub();
+      } catch (error) {
+        console.log(error);
+      }
+
+      router.push("/mytasks");
+    };
+
+    const loginWithGoogle = async () => {
+      try {
+        await userStore.signInWithGoogle();
+      } catch (error) {
+        console.log(error);
+      }
+
+      router.push("/mytasks");
+    };
+
+    return { loginWithFacebook, loginWithGitHub, loginWithGoogle };
   },
 };
 </script>
@@ -45,6 +66,10 @@ export default {
 .google-btn {
   background-color: #fff;
   border: 1px solid #555;
+}
+.github-btn {
+  background-color: #2b3034;
+  color: #fff;
 }
 .login-social {
   display: flex;

@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import {
   auth,
   fb,
+  git,
+  google,
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -38,6 +40,14 @@ export const useUserStore = defineStore("userStore", {
     },
     async signInWithFacebook() {
       await signInWithPopup(auth, fb);
+      this.userLoggedIn = true;
+    },
+    async signInWithGitHub() {
+      await signInWithPopup(auth, git);
+      this.userLoggedIn = true;
+    },
+    async signInWithGoogle() {
+      await signInWithPopup(auth, google);
       this.userLoggedIn = true;
     },
     async deleteAccount() {
