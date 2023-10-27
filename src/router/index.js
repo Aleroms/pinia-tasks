@@ -3,6 +3,7 @@ import Home from "@/view/Home.vue";
 import MyTasks from "@/view/MyTasks.vue";
 import PrivacyPolicy from "@/view/PrivacyPolicy.vue";
 import DeleteAccount from "@/view/DeleteAccount.vue";
+import { useUserStore } from "@/stores/UserStore.js";
 const routes = [
   {
     name: "Home",
@@ -14,6 +15,7 @@ const routes = [
     name: "Tasks",
     path: "/mytasks",
     component: MyTasks,
+    meta: { requiresAuth: true },
   },
   {
     name: "PrivacyPolicy",
@@ -24,6 +26,7 @@ const routes = [
     name: "DeleteAccount",
     path: "/deleteaccount",
     component: DeleteAccount,
+    meta: { requiresAuth: true },
   },
 ];
 
@@ -32,4 +35,12 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach(async (to, from) => {
+  if (to.meta.requiresAuth) {
+    const userStore = useUserStore();
+    if (!userStore.userLoggedIn) {
+      return { name: "Home" };
+    }
+  }
+});
 export default router;
