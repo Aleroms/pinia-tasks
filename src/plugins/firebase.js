@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -25,12 +26,14 @@ const auth = getAuth(app);
 const fb = new FacebookAuthProvider();
 const git = new GithubAuthProvider();
 const google = new GoogleAuthProvider();
+const db = getFirestore(app);
 
 export {
   auth,
   git,
   fb,
   google,
+  db,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,

@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
+import { collection, addDoc } from "firebase/firestore";
 import {
   auth,
   fb,
   git,
+  db,
   google,
   signInWithPopup,
   createUserWithEmailAndPassword,
@@ -17,12 +19,21 @@ export const useUserStore = defineStore("userStore", {
   }),
   actions: {
     async register(values) {
-      console.log(values);
+      //register
       const userCred = await createUserWithEmailAndPassword(
         auth,
         values.email,
         values.password
       );
+      //create collection tasks w/ default vals
+      const docRef = await addDoc(collection(db, "tasks"), {
+        tasks: [
+          { id: 1, title: "buy some milk", isFav: false },
+          { id: 2, title: "play game", isFav: true },
+        ],
+      });
+      console.log("Document written ID:", docRef.id);
+
       this.userLoggedIn = true;
     },
     async login(values) {
