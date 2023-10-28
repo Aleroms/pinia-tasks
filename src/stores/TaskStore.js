@@ -1,11 +1,9 @@
 import { defineStore } from "pinia";
+import { useUserStore } from "./UserStore";
 
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
-    tasks: [
-      { id: 1, title: "buy some milk", isFav: false },
-      { id: 2, title: "play game", isFav: true },
-    ],
+    tasks: [],
   }),
   getters: {
     favs() {
@@ -32,7 +30,7 @@ export const useTaskStore = defineStore("taskStore", {
       });
     },
     toggleFav(id) {
-      const task = this.tasks.find(t => t.id === id);
+      const task = this.tasks.find((t) => t.id === id);
       task.isFav = !task.isFav;
     },
   },
