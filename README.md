@@ -34,3 +34,9 @@ must install both packets if using rules as well
 This project started out following a pinia tutorial on [Youtube](https://www.youtube.com/watch?v=u0B9dysw29A&list=PL4cUxeGkcC9hp28dYyYBy3xoOdoeNw-hD&index=1). I have always been uneasy on using pinia because I was taught about it using `Vue 2` when I had to write code like `computed: {...mapStores(useCartStore, useUserStore)}`. This sort of hindered my approach. I was always using `Vue 2` because I didn't understand how easy pinia is using `Vue 3`. The above code snippet is literally just `const cartStore = useCartStore()`! I am glad I had time to review and learn the simplicities of using pinia using `Vue 3`'s `setup()`.
 
 When I got a grasp of pinia, I wanted to challenge myself. The next step was to implement Firebase so that the user's data is saved and they can access it at a later date. I learned that I gotta learn _how_ to read documentation, because I sure had _many_ to read, such as Vue, Vue Router, Firebase, Meta, Netlify, and other online resources that helped me resolve issues. Continuous learning is a blessing tbh. I am glad I was able to fix and implement features I thought were difficult at the time of coding 😊.
+
+
+## Tasks I need to complete
+[ ] - make sure to update login display variables when signing in with loginSocials
+[ ] - make sure to add correct error messages for login & registering
+[ ] - update firebase data before user logs out
