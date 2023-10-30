@@ -35,8 +35,16 @@ This project started out following a pinia tutorial on [Youtube](https://www.you
 
 When I got a grasp of pinia, I wanted to challenge myself. The next step was to implement Firebase so that the user's data is saved and they can access it at a later date. I learned that I gotta learn _how_ to read documentation, because I sure had _many_ to read, such as Vue, Vue Router, Firebase, Meta, Netlify, and other online resources that helped me resolve issues. Continuous learning is a blessing tbh. I am glad I was able to fix and implement features I thought were difficult at the time of coding 😊.
 
-
 ## Tasks I need to complete
+
 [ ] - make sure to update login display variables when signing in with loginSocials
 [ ] - make sure to add correct error messages for login & registering
-[ ] - update firebase data before user logs out
+[ ] - add transitions for polish when user navigates to different pages
+[ ] - add clicked css to know when user clicks a button
+[ ] - check to see if the form is toggling correctly. Sometimes when i click to different page it brings me back to register instead of login
+[ ] - add cursor pointer to pinia tasks in header
+[ ] - enable authentication persistence
+
+## Polish ?
+
+- add infinite scroll maybe?
