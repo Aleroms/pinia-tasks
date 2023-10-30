@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
-import { useUserStore } from "./UserStore";
-
+import { updateUserTask } from "@/plugins/firebase.js";
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
     tasks: [],
@@ -21,17 +20,33 @@ export const useTaskStore = defineStore("taskStore", {
     },
   },
   actions: {
-    addTask(task) {
+    async addTask(task) {
       this.tasks.push(task);
+      //this is where we gotta do firebase stuff right here
+      try {
+        await updateUserTask(this.tasks);
+      } catch (error) {
+        console.log(error, "could not addTask");
+      }
     },
-    deleteTask(id) {
+    async deleteTask(id) {
       this.tasks = this.tasks.filter((t) => {
         return t.id !== id;
       });
+      try {
+        await updateUserTask(this.tasks);
+      } catch (error) {
+        console.log(error, "could not update tasks");
+      }
     },
-    toggleFav(id) {
+    async toggleFav(id) {
       const task = this.tasks.find((t) => t.id === id);
       task.isFav = !task.isFav;
+      try {
+        await updateUserTask(this.tasks);
+      } catch (error) {
+        console.log(error, "could not toggle favorite");
+      }
     },
   },
 });

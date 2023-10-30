@@ -20,16 +20,6 @@ export default {
     const userStore = useUserStore();
     const router = useRouter();
 
-    const loginWithFacebook = async () => {
-      try {
-        await userStore.signInWithFacebook();
-      } catch (error) {
-        console.log(error);
-      }
-
-      router.push("/mytasks");
-    };
-
     const loginWithGitHub = async () => {
       try {
         await userStore.signInWithGitHub();
@@ -50,13 +40,13 @@ export default {
       router.push("/mytasks");
     };
 
-    return { loginWithFacebook, loginWithGitHub, loginWithGoogle };
+    return { loginWithGitHub, loginWithGoogle };
   },
 };
 </script>
 
 <style scoped>
-.google-icon{
+.google-icon {
   width: 15px;
   height: 15px;
   margin-right: 10px;

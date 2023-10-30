@@ -9,6 +9,7 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 import {
@@ -143,15 +144,34 @@ const registerUser = async (values) => {
   const taskStore = useTaskStore();
   taskStore.tasks = defaultTask.tasks;
 };
+
+const updateUserTask = async (task) => {
+  //querying for current user's data
+  const q = query(
+    collection(db, "tasks"),
+    where("userID", "==", auth.currentUser.uid)
+  );
+  //reference to specific document
+  const querySnapshot = await getDocs(q);
+
+  if (!querySnapshot.empty) {
+    const firstDocument = querySnapshot.docs[0];
+
+    // Update the 'tasks' field in the document
+    await updateDoc(firstDocument.ref, {
+      tasks: task,
+    });
+
+    console.log("Document updated.");
+  } else {
+    console.log("No matching documents found.");
+  }
+};
 export {
-  auth,
-  git,
-  fb,
-  google,
-  db,
   deleteUserAccount,
   signInWithProvider,
   logoutUser,
   signInUserWithEmailAndPassword,
   registerUser,
+  updateUserTask,
 };
