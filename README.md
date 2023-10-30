@@ -48,3 +48,5 @@ When I got a grasp of pinia, I wanted to challenge myself. The next step was to 
 ## Polish ?
 
 - add infinite scroll maybe?
+- add footer section that links to my portfolio
+- add another page that is a post mortem? that way i can learn how to write code snippets
