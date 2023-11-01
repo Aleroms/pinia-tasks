@@ -9,7 +9,7 @@
       <component :is="Component" />
     </Transition>
   </RouterView>
-  <!-- <RouterView></RouterView> -->
+  <footer>Designed by <RouterLink to="/">Santiago Morales</RouterLink></footer>
 </template>
 <style>
 /* route transitions  */

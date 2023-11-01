@@ -5,6 +5,7 @@ import PrivacyPolicy from "@/view/PrivacyPolicy.vue";
 import DeleteAccount from "@/view/DeleteAccount.vue";
 import PageNotFound from "@/view/PageNotFound.vue";
 import { useUserStore } from "@/stores/UserStore.js";
+import { auth } from "@/plugins/firebase.js";
 const routes = [
   {
     name: "Home",

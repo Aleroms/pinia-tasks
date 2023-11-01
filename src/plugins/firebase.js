@@ -22,7 +22,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   deleteUser,
-  onAuthStateChanged,
+  browserLocalPersistence,
+  setPersistence,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -40,6 +41,7 @@ const fb = new FacebookAuthProvider();
 const git = new GithubAuthProvider();
 const google = new GoogleAuthProvider();
 const db = getFirestore(app);
+setPersistence(auth, browserLocalPersistence);
 
 const logoutUser = async () => {
   try {
@@ -176,5 +178,4 @@ export {
   registerUser,
   updateUserTask,
   auth,
-  onAuthStateChanged,
 };
