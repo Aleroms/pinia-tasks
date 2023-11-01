@@ -9,9 +9,25 @@ body {
 body * {
   font-family: "Poppins";
 }
-footer{
+footer {
   background: #e7e7e7;
   padding: 1rem;
+}
+code {
+  font-family: monospace;
+  font-size: inherit;
+}
+p > code {
+  background: #e7e7e7;
+  word-wrap: break-word;
+  box-decoration-break: clone;
+  padding: 0.1rem 0.3rem 0.2rem;
+  border-radius: 5px;
+}
+pre {
+  white-space: pre-wrap;
+  background-color: #e7e7e7;
+  padding-left: 10px;
 }
 /* header stuff  */
 header {
