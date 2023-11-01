@@ -32,6 +32,7 @@ header h1 {
   margin-left: 15px;
   color: #777;
   transform: rotate(2deg);
+  cursor: pointer;
 }
 
 /* filter stuff  */
@@ -73,6 +74,11 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
+
+  transition: background 0.3s ease;
+}
+button:active {
+  background: #ffd8599e;
 }
 form input {
   border: 0;
@@ -133,6 +139,11 @@ form input {
 .delete-account {
   background: #ff005d;
   color: #fff;
+
+  transition: background 0.3s ease;
+}
+.delete-account:active {
+  background: #e60155;
 }
 
 /* form validation stuff  */

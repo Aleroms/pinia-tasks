@@ -22,6 +22,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   deleteUser,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -174,4 +175,6 @@ export {
   signInUserWithEmailAndPassword,
   registerUser,
   updateUserTask,
+  auth,
+  onAuthStateChanged,
 };

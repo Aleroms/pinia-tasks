@@ -29,7 +29,7 @@
     Already have an account? <span @click="formStore.toggleForm">Log In</span>
   </p>
   <hr class="hr-text" data-content="or" />
-  <LoginSocialForm />
+  <LoginSocialForm @login="handleSocialLogin" />
 </template>
 
 <script>
@@ -44,7 +44,7 @@ import LoginSocialForm from "./LoginSocialForm.vue";
 
 export default {
   name: "RegisterForm",
-  components: { LoginSocialForm },
+  components: { ErrorMessage, LoginSocialForm },
   setup() {
     //pinia
     const formStore = useFormStore();
@@ -64,6 +64,27 @@ export default {
     const reg_alert_display = ref(false);
     const reg_alert_msg = ref("registering...");
     const reg_in_submission = ref(false);
+
+    //login with provider
+    const handleSocialLogin = async (provider) => {
+      reg_alert_display.value = true;
+      reg_alert_msg.value = "Please wait, you are being logged in...";
+      reg_in_submission.value = true;
+
+      try {
+        if (provider === "Google") {
+          await userStore.signInWithGoogle();
+        } else if (provider === "GitHub") {
+          await userStore.signInWithGitHub();
+        }
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+      reg_alert_msg.value = "Logging In...";
+      formStore.resetFormState();
+      router.push("/mytasks");
+    };
 
     const register = async (values) => {
       reg_alert_display.value = true;
@@ -86,20 +107,19 @@ export default {
 
       reg_alert_msg.value = "Successfully Signed Up! Logging In...";
       reg_in_submission.value = false;
+      formStore.resetFormState();
       router.push("/mytasks");
     };
 
     return {
       formStore,
       register,
+      handleSocialLogin,
       registerSchema,
       reg_alert_display,
       reg_alert_msg,
       reg_in_submission,
     };
   },
-  components: { ErrorMessage, LoginSocialForm },
 };
 </script>
-
-<style scoped></style>

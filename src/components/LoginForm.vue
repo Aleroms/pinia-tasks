@@ -23,7 +23,7 @@
     Don't have an account? <span @click="formStore.toggleForm">Sign Up</span>
   </p>
   <hr class="hr-text" data-content="or" />
-  <LoginSocialForm />
+  <LoginSocialForm @login="handleSocialLogin" />
 </template>
 
 <script>
@@ -49,30 +49,60 @@ export default {
     //router
     const router = useRouter();
 
-    //login
+    //login display variables & methods
     const login_alert_display = ref(false);
     const login_alert_msg = ref("logging in...");
     const login_in_submission = ref(false);
 
-    const login = async (values) => {
-      login_alert_msg.value = "Please wait, you are being logged in...";
+    //login helper function
+    const startLogin = () => {
       login_alert_display.value = true;
+      login_alert_msg.value = "Please wait, you are being logged in...";
       login_in_submission.value = true;
+    };
+    const loginSuccess = () => {
+      login_alert_msg.value = "Logging In...";
+      formStore.resetFormState();
+      router.push("/mytasks");
+    };
+    const handleErrors = (error) => {
+      //Handle Firebase errors
+      if (error.code === "auth/invalid-login-credentials") {
+        login_alert_msg.value = "Invalid login credentials...";
+      } else {
+        login_alert_msg.value = "An error has occured...";
+      }
+      console.log(error);
+    };
+
+    //login with provider
+    const handleSocialLogin = async (provider) => {
+      startLogin();
+
+      try {
+        if (provider === "Google") {
+          await userStore.signInWithGoogle();
+        } else if (provider === "GitHub") {
+          await userStore.signInWithGitHub();
+        }
+      } catch (error) {
+        handleErrors(error);
+        return;
+      }
+      loginSuccess();
+    };
+
+    //log in with email and password
+    const login = async (values) => {
+      startLogin();
 
       try {
         await userStore.login(values);
       } catch (error) {
-        //Handle Firebase errors
-        if (error.code === "auth/invalid-login-credentials") {
-          login_alert_msg.value = "Invalid login credentials...";
-        } else {
-          login_alert_msg.value = "An error has occured...";
-        }
-        console.log(error);
+        handleErrors(error);
         return;
       }
-      login_alert_msg.value = "Logging In...";
-      router.push("/mytasks");
+      loginSuccess();
     };
 
     return {
@@ -81,6 +111,7 @@ export default {
       login_alert_display,
       login_alert_msg,
       formStore,
+      handleSocialLogin,
     };
   },
 };

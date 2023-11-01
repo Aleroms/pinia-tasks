@@ -37,16 +37,17 @@ When I got a grasp of pinia, I wanted to challenge myself. The next step was to 
 
 ## Tasks I need to complete
 
-[ ] - make sure to update login display variables when signing in with loginSocials
-[ ] - make sure to add correct error messages for login & registering
-[ ] - add transitions for polish when user navigates to different pages
-[ ] - add clicked css to know when user clicks a button
-[ ] - check to see if the form is toggling correctly. Sometimes when i click to different page it brings me back to register instead of login
-[ ] - add cursor pointer to pinia tasks in header
-[ ] - enable authentication persistence
+[x] - make sure to update login display variables when signing in with loginSocials
+[x] - make sure to add correct error messages for login & registering
+[x] - add transitions for polish when user navigates to different pages [ask chatgpt whats wrong with my code]
+[x] - add clicked css to know when user clicks a button
+[x] - check to see if the form is toggling correctly. Sometimes when i click to different page it brings me back to register instead of login
+[x] - add cursor pointer to pinia tasks in header
+[?] - enable authentication persistence
 
 ## Polish ?
 
 - add infinite scroll maybe?
 - add footer section that links to my portfolio
 - add another page that is a post mortem? that way i can learn how to write code snippets
+- add an offline mode that stores data locally on device?

@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="banner"></div> -->
   <div class="authentication">
     <h2 class="auth-title">{{ formStore.name }}</h2>
     <LoginForm v-if="formStore.name === 'Login'" />
@@ -12,12 +11,14 @@ import { ref } from "vue";
 import LoginForm from "../components/LoginForm.vue";
 import RegisterForm from "../components/RegisterForm.vue";
 import { useFormStore } from "../stores/FormStore";
+import { useUserStore } from "../stores/UserStore";
 
 export default {
   name: "HomePage",
   components: { LoginForm, RegisterForm },
   setup() {
     const formStore = useFormStore();
+    const userStore = useUserStore();
 
     return { formStore };
   },
@@ -25,10 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.banner {
-  background-color: #e7e7e7;
-  height: 84px;
-}
+
 .authentication {
   padding: 0 1rem;
 }

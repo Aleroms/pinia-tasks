@@ -8,5 +8,8 @@ export const useFormStore = defineStore("formStore", {
     toggleForm() {
       this.name = this.name === "Login" ? "Register" : "Login";
     },
+    resetFormState() {
+      this.name = "Login";
+    },
   },
 });

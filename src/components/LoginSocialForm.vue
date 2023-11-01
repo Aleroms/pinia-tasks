@@ -13,31 +13,37 @@
 
 <script>
 import { useUserStore } from "../stores/UserStore";
+import { useFormStore } from "../stores/FormStore";
 import { useRouter } from "vue-router";
 export default {
   name: "LoginSocialForm",
-  setup() {
+  emits: ["login"],
+  setup(_, { emit }) {
     const userStore = useUserStore();
+    const formStore = useFormStore();
     const router = useRouter();
 
     const loginWithGitHub = async () => {
-      try {
-        await userStore.signInWithGitHub();
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   await userStore.signInWithGitHub();
+      // } catch (error) {
+      //   console.log(error);
+      // }
+      emit("login", "GitHub");
 
-      router.push("/mytasks");
+      formStore.resetFormState();
+      router.push({ name: "Tasks" });
     };
 
     const loginWithGoogle = async () => {
-      try {
-        await userStore.signInWithGoogle();
-      } catch (error) {
-        console.log(error);
-      }
-
-      router.push("/mytasks");
+      // try {
+      //   await userStore.signInWithGoogle();
+      // } catch (error) {
+      //   console.log(error);
+      // }
+      emit("login", "Google");
+      formStore.resetFormState();
+      router.push({ name: "Tasks" });
     };
 
     return { loginWithGitHub, loginWithGoogle };
@@ -62,10 +68,21 @@ export default {
 .google-btn {
   background-color: #fff;
   border: 1px solid #555;
+
+  transition: background-color 0.3s ease;
 }
+.google-btn:active {
+  background-color: #f4f4f4;
+}
+
 .github-btn {
   background-color: #2b3034;
   color: #fff;
+
+  transition: background-color 0.3s ease;
+}
+.github-btn:active {
+  background-color: #181b1d;
 }
 .login-social {
   display: flex;
