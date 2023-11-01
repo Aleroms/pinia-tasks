@@ -2,12 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useUserStore } from "@/stores/UserStore.js";
 import { auth } from "@/plugins/firebase.js";
 
-import Home from "@/view/Home.vue";
-import MyTasks from "@/view/MyTasks.vue";
-import PrivacyPolicy from "@/view/PrivacyPolicy.vue";
-import DeleteAccount from "@/view/DeleteAccount.vue";
-import PageNotFound from "@/view/PageNotFound.vue";
-import About from "@/view/About.vue";
+const Home = () => import("@/view/Home.vue");
+const MyTasks = () => import("@/view/MyTasks.vue");
+const PrivacyPolicy = () => import("@/view/PrivacyPolicy.vue");
+const DeleteAccount = () => import("@/view/DeleteAccount.vue");
+const PageNotFound = () => import("@/view/PageNotFound.vue");
+const About = () => import("@/view/About.vue");
 
 const routes = [
   {
