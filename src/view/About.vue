@@ -37,6 +37,12 @@
           >
           - Firebase documentation on managing users.
         </li>
+        <li>
+          <a href="https://sortablejs.github.io/Vue.Draggable/#/simple"
+            >Vue Draggable</a
+          >
+          - Documentation and examples of <code>vuedraggable</code> library
+        </li>
       </ul>
     </div>
     <div class="issues-encountered">
@@ -49,6 +55,12 @@
         understand it much. The solution was to create a file named
         <code>_redirects</code> in <code>/public/</code> with the content
         <code>/* /index.html 200</code>.
+      </p>
+      <p>
+        Another issue I encountered was that I couldn't use `v-model` with a
+        getter function from my pinia store. The getter function returned a
+        filtered array that filters for tasks that are marked favorite. Because
+        of this I did not implement drag and drop for my favs, only for all.
       </p>
     </div>
     <div class="post-mortem">
@@ -95,6 +107,31 @@
         Continuous learning is a blessing tbh. I am glad I was able to fix and
         implement features I thought were difficult at the time of coding 😊.
       </p>
+    </div>
+    <div class="about-me">
+      <h2>About Me</h2>
+      <p>
+        As a highly motivated Front-end / Full Stack Developer based in Mission
+        Viejo, CA, I am committed to continuous learning and possess a
+        growth-mindset. With a Bachelor's degree in Computer Game Science from
+        the University of California, Irvine, I have a strong foundation in
+        frontend technologies like React, Redux, and Vue, and backend skills in
+        Laravel, PHP, and Node.js.
+      </p>
+      <p>
+        While I may have limited years of professional experience, my passion
+        for web development has driven me to actively engage in a range of
+        projects. I consistently seek opportunities to enhance my skills.
+      </p>
+      <p>
+        With an eagerness to take on new challenges and grow as a developer, I
+        am enthusiastic about contributing my junior-level expertise to
+        innovative projects. Let's connect and explore how we can collaborate on
+        exciting ventures together. Email: santiagomorales333@yahoo.com
+      </p>
+      <a href="https://www.linkedin.com/in/santiago-morales-14b466194/"
+        >LinkedIn</a
+      >
     </div>
   </div>
 </template>

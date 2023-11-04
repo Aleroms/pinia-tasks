@@ -23,11 +23,13 @@ must install both packets if using rules as well
 - [Vee Validate](https://vee-validate.logaretm.com/v4/tutorials/basics/) - basics on form validation
 - [Page Not Found](https://medium.com/@ishoshot/page-not-found-on-reload-vuejs-netlify-c71716e97e6) - helped me fix a broken link when the link exists
 - [Managing Users](https://firebase.google.com/docs/auth/web/manage-users) - Firebase documentation on managing the users.
+- [Vue Draggable](https://sortablejs.github.io/Vue.Draggable/#/simple) - Vue Draggable for drag and drop feature.
 
 ## issues encountered
 
 - I was having a problem using Netlify to host my vue app. Issue was I was receiving a "page not found" and "broken link" when I tried to fetch `piniatasks.netlify.app/privacypolicy`. Apparently, the issue is because vue-router uses hash mode as default. I don't really understand it much.
   The solution was to create a file named `_redirects` in `/public/` with the content `/*  /index.html  200`
+- Another issue I encountered was that I couldn't use `v-model` with a getter function from my pinia store. The getter function returned a filtered array that filters for tasks that are marked favorite. Because of this I did not implement drag and drop for my favs, only for all.
 
 ## what I learned
 
