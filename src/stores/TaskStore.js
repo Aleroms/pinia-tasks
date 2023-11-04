@@ -23,29 +23,24 @@ export const useTaskStore = defineStore("taskStore", {
     async addTask(task) {
       this.tasks.push(task);
       //this is where we gotta do firebase stuff right here
-      try {
-        await updateUserTask(this.tasks);
-      } catch (error) {
-        console.log(error, "could not addTask");
-      }
+      this.updateTasks();
     },
     async deleteTask(id) {
       this.tasks = this.tasks.filter((t) => {
         return t.id !== id;
       });
-      try {
-        await updateUserTask(this.tasks);
-      } catch (error) {
-        console.log(error, "could not update tasks");
-      }
+      this.updateTasks();
     },
     async toggleFav(id) {
       const task = this.tasks.find((t) => t.id === id);
       task.isFav = !task.isFav;
+      this.updateTasks();
+    },
+    async updateTasks() {
       try {
         await updateUserTask(this.tasks);
       } catch (error) {
-        console.log(error, "could not toggle favorite");
+        console.log(error);
       }
     },
   },

@@ -84,9 +84,16 @@
         access it at a later date. I learned that I gotta learn <i>how</i> to
         read documentation, because I sure had <i>much</i>, such as Vue, Vue
         Router, Firebase, Meta, Netlify, and other online resources that helped
-        me resolve issues. Continuous learning is a blessing tbh. I am glad I
-        was able to fix and implement features I thought were difficult at the
-        time of coding 😊.
+        me resolve issues.
+      </p>
+      <p>
+        After integrating Firebase, I wanted to search for a library to
+        implement drag and drop. I found <code>vuedraggable</code>. This library
+        made it fairly easy for me to include this feature.
+      </p>
+      <p>
+        Continuous learning is a blessing tbh. I am glad I was able to fix and
+        implement features I thought were difficult at the time of coding 😊.
       </p>
     </div>
   </div>

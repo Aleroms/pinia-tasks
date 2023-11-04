@@ -11,11 +11,13 @@
     </nav>
 
     <!-- task list  -->
-    <div class="task-list" v-if="filter === 'all'">
+    <div class="task-list interactable" v-if="filter === 'all'">
       <p>You have {{ taskStore.totalCount }} tasks left to do</p>
-      <div v-for="task in taskStore.tasks">
-        <TaskDetails :task="task" />
-      </div>
+      <draggable v-model="taskStore.tasks" item-key="id">
+        <template #item="{ element: tasks }">
+          <TaskDetails :task="tasks" />
+        </template>
+      </draggable>
     </div>
 
     <!-- looping over filtered favorites in taskStore() -->
@@ -33,18 +35,31 @@
 import TaskDetails from "@/components/TaskDetails.vue";
 import TaskForm from "@/components/TaskForm.vue";
 import { useTaskStore } from "@/stores/TaskStore.js";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import draggable from "vuedraggable";
 export default {
-  name:'MyTasks',
-  components: { TaskDetails, TaskForm },
+  name: "MyTasks",
+  components: { TaskDetails, TaskForm, draggable },
   setup() {
     //returns stores
     const taskStore = useTaskStore();
     const filter = ref("all");
+
+    watch(
+      () => taskStore.tasks,
+      () => {
+        taskStore.updateTasks();
+        console.log("tasks has been changed");
+      }
+    );
 
     return { taskStore, filter };
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.interactable {
+  cursor: pointer;
+}
+</style>
